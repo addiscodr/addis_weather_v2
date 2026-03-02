@@ -2,20 +2,12 @@ class Current {
   final String time;
   final int interval;
 
-  Current({
-    required this.time,
-    required this.interval,
-  });
+  Current({required this.time, required this.interval});
 
-  factory Current.fromJson(Map<String, dynamic> json) => Current(
-        time: json["time"],
-        interval: json["interval"],
-      );
+  factory Current.fromJson(Map<String, dynamic> json) =>
+      Current(time: json["time"], interval: json["interval"]);
 
-  Map<String, dynamic> toJson() => {
-        "time": time,
-        "interval": interval,
-      };
+  Map<String, dynamic> toJson() => {"time": time, "interval": interval};
 }
 
 class Daily {
@@ -32,18 +24,18 @@ class Daily {
   });
 
   factory Daily.fromJson(Map<String, dynamic> json) => Daily(
-        time: json["time"],
-        weatherCode: json["weather_code"],
-        temperature2mMax: json["temperature_2m_max"],
-        temperature2mMin: json["temperature_2m_min"],
-      );
+    time: json["time"],
+    weatherCode: json["weather_code"],
+    temperature2mMax: json["temperature_2m_max"],
+    temperature2mMin: json["temperature_2m_min"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "time": time,
-        "weather_code": weatherCode,
-        "temperature_2m_max": temperature2mMax,
-        "temperature_2m_min": temperature2mMin,
-      };
+    "time": time,
+    "weather_code": weatherCode,
+    "temperature_2m_max": temperature2mMax,
+    "temperature_2m_min": temperature2mMin,
+  };
 }
 
 class WeeklyWeather {
@@ -74,32 +66,32 @@ class WeeklyWeather {
   });
 
   factory WeeklyWeather.fromJson(Map<String, dynamic> json) => WeeklyWeather(
-        latitude: json["latitude"] ?? 0.0,
-        longitude: json["longitude"] ?? 0.0,
-        generationtimeMs: json["generationtime_ms"] ?? 0.0,
-        utcOffsetSeconds: json["utc_offset_seconds"] ?? 0,
-        timezone: json["timezone"] ?? '',
-        timezoneAbbreviation: json["timezone_abbreviation"] ?? '',
-        elevation: json["elevation"] ?? 0.0,
-        currentUnits: CurrentUnits.fromJson(json["current_units"]),
-        current: Current.fromJson(json["current"]),
-        dailyUnits: DailyUnits.fromJson(json["daily_units"]),
-        daily: Daily.fromJson(json['daily']),
-      );
+    latitude: (json["latitude"] as num?)?.toDouble() ?? 0.0,
+    longitude: (json["longitude"] as num?)?.toDouble() ?? 0.0,
+    generationtimeMs: (json["generationtime_ms"] as num?)?.toDouble() ?? 0.0,
+    utcOffsetSeconds: json["utc_offset_seconds"] ?? 0,
+    timezone: json["timezone"] ?? '',
+    timezoneAbbreviation: json["timezone_abbreviation"] ?? '',
+    elevation: (json["elevation"] as num?)?.toDouble() ?? 0.0,
+    currentUnits: CurrentUnits.fromJson(json["current_units"]),
+    current: Current.fromJson(json["current"]),
+    dailyUnits: DailyUnits.fromJson(json["daily_units"]),
+    daily: Daily.fromJson(json['daily']),
+  );
 
   Map<String, dynamic> toJson() => {
-        "latitude": latitude,
-        "longitude": longitude,
-        "generationtime_ms": generationtimeMs,
-        "utc_offset_seconds": utcOffsetSeconds,
-        "timezone": timezone,
-        "timezone_abbreviation": timezoneAbbreviation,
-        "elevation": elevation,
-        "current_units": currentUnits.toJson(),
-        "current": current.toJson(),
-        "daily_units": dailyUnits.toJson(),
-        "daily": daily.toJson(),
-      };
+    "latitude": latitude,
+    "longitude": longitude,
+    "generationtime_ms": generationtimeMs,
+    "utc_offset_seconds": utcOffsetSeconds,
+    "timezone": timezone,
+    "timezone_abbreviation": timezoneAbbreviation,
+    "elevation": elevation,
+    "current_units": currentUnits.toJson(),
+    "current": current.toJson(),
+    "daily_units": dailyUnits.toJson(),
+    "daily": daily.toJson(),
+  };
 }
 
 class CurrentUnits {
@@ -108,15 +100,10 @@ class CurrentUnits {
 
   CurrentUnits({required this.time, required this.interval});
 
-  factory CurrentUnits.fromJson(Map<String, dynamic> json) => CurrentUnits(
-        time: json["time"],
-        interval: json["interval"],
-      );
+  factory CurrentUnits.fromJson(Map<String, dynamic> json) =>
+      CurrentUnits(time: json["time"], interval: json["interval"]);
 
-  Map<String, dynamic> toJson() => {
-        "time": time,
-        "interval": interval,
-      };
+  Map<String, dynamic> toJson() => {"time": time, "interval": interval};
 }
 
 class DailyUnits {
@@ -133,16 +120,16 @@ class DailyUnits {
   });
 
   factory DailyUnits.fromJson(Map<String, dynamic> json) => DailyUnits(
-        time: json["time"],
-        weatherCode: json["weather_code"],
-        temperature2mMax: json["temperature_2m_max"],
-        temperature2mMin: json["temperature_2m_min"],
-      );
+    time: json["time"],
+    weatherCode: json["weather_code"],
+    temperature2mMax: json["temperature_2m_max"],
+    temperature2mMin: json["temperature_2m_min"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "time": time,
-        "weather_code": weatherCode,
-        "temperature_2m_max": temperature2mMax,
-        "temperature_2m_min": temperature2mMin,
-      };
+    "time": time,
+    "weather_code": weatherCode,
+    "temperature_2m_max": temperature2mMax,
+    "temperature_2m_min": temperature2mMin,
+  };
 }

@@ -101,15 +101,15 @@ class Main {
 
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
-      temp: json['temp'].toDouble(),
-      feelsLike: json['feels_like'].toDouble(),
-      tempMin: json['temp_min'].toDouble(),
-      tempMax: json['temp_max'].toDouble(),
+      temp: (json['temp'] as num).toDouble(),
+      feelsLike: (json['feels_like'] as num).toDouble(),
+      tempMin: (json['temp_min'] as num).toDouble(),
+      tempMax: (json['temp_max'] as num).toDouble(),
       pressure: json['pressure'],
       seaLevel: json['sea_level'],
       grndLevel: json['grnd_level'],
       humidity: json['humidity'],
-      tempKf: json['temp_kf'].toDouble(),
+      tempKf: (json['temp_kf'] as num?)?.toDouble() ?? 0.0,
     );
   }
 }
@@ -118,14 +118,10 @@ class Main {
 class Clouds {
   final int all;
 
-  const Clouds({
-    required this.all,
-  });
+  const Clouds({required this.all});
 
   factory Clouds.fromJson(Map<String, dynamic> json) {
-    return Clouds(
-      all: json['all'],
-    );
+    return Clouds(all: json['all']);
   }
 }
 
@@ -135,17 +131,13 @@ class Wind {
   final int deg;
   final double gust;
 
-  const Wind({
-    required this.speed,
-    required this.deg,
-    required this.gust,
-  });
+  const Wind({required this.speed, required this.deg, required this.gust});
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: json['speed'].toDouble(),
+      speed: (json['speed'] as num).toDouble(),
       deg: json['deg'],
-      gust: json['gust'].toDouble(),
+      gust: (json['gust'] as num?)?.toDouble() ?? 0.0,
     );
   }
 }
@@ -190,16 +182,10 @@ class Coord {
   final double lat;
   final double lon;
 
-  const Coord({
-    required this.lat,
-    required this.lon,
-  });
+  const Coord({required this.lat, required this.lon});
 
   factory Coord.fromJson(Map<String, dynamic> json) {
-    return Coord(
-      lat: json['lat'].toDouble(),
-      lon: json['lon'].toDouble(),
-    );
+    return Coord(lat: json['lat'].toDouble(), lon: json['lon'].toDouble());
   }
 }
 
@@ -207,12 +193,10 @@ class Coord {
 class Rain {
   final double threeHours;
 
-  const Rain({
-    required this.threeHours,
-  });
+  const Rain({required this.threeHours});
 
   factory Rain.fromJson(Map<String, dynamic> json) {
-    return Rain(threeHours: json['3h'] ?? 0.0);
+    return Rain(threeHours: (json['3h'] as num?)?.toDouble() ?? 0.0);
   }
 }
 
@@ -220,13 +204,9 @@ class Rain {
 class Sys {
   final String pod;
 
-  const Sys({
-    required this.pod,
-  });
+  const Sys({required this.pod});
 
   factory Sys.fromJson(Map<String, dynamic> json) {
-    return Sys(
-      pod: json['pod'] ?? '',
-    );
+    return Sys(pod: json['pod'] ?? '');
   }
 }
