@@ -51,7 +51,7 @@ class WeatherScreen extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: 15),
-            HourlyForecastView(),
+            const HourlyForecastView(),
           ],
         );
       },

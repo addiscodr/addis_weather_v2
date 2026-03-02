@@ -15,20 +15,23 @@ class HourlyForecastView extends ConsumerWidget {
     final hourlyWeatherData = ref.watch(hourlyWeatherProvider);
     return hourlyWeatherData.when(
       data: (hourlyWeather) {
-        return ListView.builder(
-          itemCount: hourlyWeather.cnt,
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            final weather = hourlyWeather.list[index];
-
-            return HourlyForcastTile(
-              id: weather.weather[0].id,
-              hour: weather.dt.time,
-              temp: weather.main.temp.round(),
-              isActive: index == 0,
-            );
-          },
+        return SizedBox(
+          height: 100,
+          child: ListView.builder(
+            itemCount: hourlyWeather.cnt,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              final weather = hourlyWeather.list[index];
+          
+              return HourlyForcastTile(
+                id: weather.weather[0].id,
+                hour: weather.dt.time,
+                temp: weather.main.temp.round(),
+                isActive: index == 0,
+              );
+            },
+          ),
         );
       },
       error: (error, stackTrace) {
