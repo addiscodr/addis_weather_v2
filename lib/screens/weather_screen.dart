@@ -2,6 +2,8 @@ import 'package:addis_weather_v2/constants/text_styles.dart';
 import 'package:addis_weather_v2/extensions/datetime.dart';
 import 'package:addis_weather_v2/providers/current_weather_provider.dart';
 import 'package:addis_weather_v2/views/gradient_container.dart';
+import 'package:addis_weather_v2/views/hourly_forecast_view.dart';
+import 'package:addis_weather_v2/views/weather_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,6 +35,23 @@ class WeatherScreen extends ConsumerWidget {
                 Text(weather.weather[0].description, style: TextStyles.h2),
               ],
             ),
+            const SizedBox(height: 40),
+            WeatherInfo(weather: weather),
+            const SizedBox(height: 40),
+
+            // view hourly forecast
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Today', style: TextStyles.h2),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('View full forecast'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            HourlyForecastView(),
           ],
         );
       },
