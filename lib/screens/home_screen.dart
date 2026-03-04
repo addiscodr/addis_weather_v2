@@ -1,4 +1,5 @@
 import 'package:addis_weather_v2/constants/app_colors.dart';
+import 'package:addis_weather_v2/screens/search_screen.dart';
 import 'package:addis_weather_v2/screens/weather_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final _destinations = const [
     NavigationDestination(
-      icon: Icon(Icons.home_outlined, color: Colors.white,),
+      icon: Icon(Icons.home_outlined, color: Colors.white),
       selectedIcon: Icon(Icons.home),
       label: '',
     ),
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final _screens = [
     const WeatherScreen(),
-    const Center(child: Text('Search Screen')),
+    const SearchScreen(),
     const Center(child: Text('Weather Screen')),
     const Center(child: Text('Settings Screen')),
   ];
@@ -45,12 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: _screens[_currentPageIndex],
       bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
+        data: const NavigationBarThemeData(
           backgroundColor: AppColors.secondaryBlack,
-
         ),
         child: NavigationBar(
           destinations: _destinations,

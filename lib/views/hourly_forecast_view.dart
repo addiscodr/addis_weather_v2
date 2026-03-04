@@ -1,7 +1,6 @@
 import 'package:addis_weather_v2/constants/app_colors.dart';
 import 'package:addis_weather_v2/constants/text_styles.dart';
 import 'package:addis_weather_v2/extensions/int.dart';
-import 'package:addis_weather_v2/models/weather.dart';
 import 'package:addis_weather_v2/providers/hourly_weather_provider.dart';
 import 'package:addis_weather_v2/utils/get_weather_icons.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class HourlyForecastView extends ConsumerWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               final weather = hourlyWeather.list[index];
-          
+
               return HourlyForcastTile(
                 id: weather.weather[0].id,
                 hour: weather.dt.time,
