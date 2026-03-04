@@ -14,14 +14,17 @@ class WeatherInfo extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          WeatherInfoTile(title: 'Temp', value: '${weather.main.temp}'),
+          WeatherInfoTile(
+            title: 'Temp',
+            value: '${weather.main.temp.toStringAsFixed(1)}°C',
+          ),
           WeatherInfoTile(
             title: 'Wind',
             value: '${weather.wind.speed.kmh} km/h',
           ),
           WeatherInfoTile(
             title: 'Humidity',
-            value: '${weather.main.humidity}%',
+            value: '${weather.main.humidity ?? 0}%',
           ),
         ],
       ),

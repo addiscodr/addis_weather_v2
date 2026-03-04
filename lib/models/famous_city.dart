@@ -1,4 +1,3 @@
-//ignore_for_file: public_member_api_docs, sort_constructors_first
 class FamousCity {
   final String name;
   final double lat;
@@ -8,7 +7,7 @@ class FamousCity {
 }
 
 List<FamousCity> famousCities = [
-  FamousCity(name: 'Lodon', lat: 51.5074, lon: -0.1278),
+  FamousCity(name: 'London', lat: 51.5074, lon: -0.1278),
 
   FamousCity(name: 'Paris', lat: 48.8566, lon: 2.3522),
 

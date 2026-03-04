@@ -1,4 +1,5 @@
 import 'package:addis_weather_v2/constants/app_colors.dart';
+import 'package:addis_weather_v2/screens/forecast_screen.dart';
 import 'package:addis_weather_v2/screens/search_screen.dart';
 import 'package:addis_weather_v2/screens/weather_screen.dart';
 import 'package:flutter/material.dart';
@@ -39,13 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
   final _screens = [
     const WeatherScreen(),
     const SearchScreen(),
-    const Center(child: Text('Weather Screen')),
+    const ForecastScreen(),
     const Center(child: Text('Settings Screen')),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(      
       body: _screens[_currentPageIndex],
       bottomNavigationBar: NavigationBarTheme(
         data: const NavigationBarThemeData(

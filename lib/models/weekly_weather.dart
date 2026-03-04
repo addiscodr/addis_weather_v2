@@ -46,9 +46,9 @@ class WeeklyWeather {
   final String timezone;
   final String timezoneAbbreviation;
   final double elevation;
-  final dynamic currentUnits;
-  final dynamic current;
-  final dynamic dailyUnits;
+  final CurrentUnits currentUnits;
+  final Current current;
+  final DailyUnits dailyUnits;
   final Daily daily;
 
   WeeklyWeather({

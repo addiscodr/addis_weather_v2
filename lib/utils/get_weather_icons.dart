@@ -1,6 +1,4 @@
-String getWeatherIcon({
-  required int weatherCode,
-}) {
+String getWeatherIcon({required int weatherCode}) {
   String weatherCondition = '01d';
 
   if (weatherCode == 801) {
@@ -58,7 +56,7 @@ String getWeatherIcon2(int id) {
     return 'assets/icons/7.png';
   }
   if (id >= 70 && id < 80) {
-    return 'assets/icons/04d';
+    return 'assets/icons/04d.png';
   }
   if (id >= 80 && id < 85) {
     return 'assets/icons/7.png';

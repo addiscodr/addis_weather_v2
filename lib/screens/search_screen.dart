@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(            
       body: GradientContainer(
         children: [
           const Column(

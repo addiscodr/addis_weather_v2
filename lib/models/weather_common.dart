@@ -1,0 +1,168 @@
+import 'package:flutter/foundation.dart' show immutable;
+
+@immutable
+class Weather {
+  final Coord coord;
+  final Main main;
+  final Wind wind;
+  final Rain? rain;
+  final Clouds clouds;
+  final Sys sys;
+
+  const Weather({
+    required this.coord,
+    required this.main,
+    required this.wind,
+    this.rain,
+    required this.clouds,
+    required this.sys,
+  });
+
+  factory Weather.fromJson(Map<String, dynamic> json) => Weather(
+    coord: Coord.fromJson(json['coord'] as Map<String, dynamic>),
+
+    main: Main.fromJson(json['main'] as Map<String, dynamic>),
+
+    wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
+    rain: json['rain'] != null
+        ? Rain.fromJson(json['rain'] as Map<String, dynamic>)
+        : null,
+    clouds: Clouds.fromJson(json['clouds'] as Map<String, dynamic>),
+
+    sys: Sys.fromJson(json['sys'] as Map<String, dynamic>),
+  );
+}
+
+@immutable
+class Coord {
+  final double lon;
+  final double lat;
+
+  const Coord({required this.lon, required this.lat});
+
+  factory Coord.fromJson(Map<String, dynamic> json) => Coord(
+    lon: (json['lon'] as num).toDouble(),
+    lat: (json['lat'] as num).toDouble(),
+  );
+}
+
+@immutable
+class WeatherData {
+  final int id;
+  final String main;
+  final String description;
+  final String icon;
+
+  const WeatherData({
+    required this.id,
+    required this.main,
+    required this.description,
+    required this.icon,
+  });
+
+  factory WeatherData.fromJson(Map<String, dynamic> json) => WeatherData(
+    id: json['id'] as int,
+    main: json['main'] as String,
+    description: json['description'] as String,
+    icon: json['icon'] as String,
+  );
+}
+
+@immutable
+class Main {
+  final double temp;
+  final double feelsLike;
+  final double tempMin;
+  final double tempMax;
+  final int? pressure;
+  final int? humidity;
+  final int? seaLevel;
+  final int? grndLevel;
+  final int? visibility;
+
+  const Main({
+    required this.temp,
+    required this.feelsLike,
+    required this.tempMin,
+    required this.tempMax,
+    this.pressure,
+    this.humidity,
+    this.seaLevel,
+    this.grndLevel,
+    this.visibility,
+  });
+
+  factory Main.fromJson(Map<String, dynamic> json) => Main(
+    temp: (json['temp'] as num).toDouble(),
+    feelsLike: (json['feels_like'] as num).toDouble(),
+    tempMin: (json['temp_min'] as num).toDouble(),
+    tempMax: (json['temp_max'] as num).toDouble(),
+    pressure: json['pressure'],
+    humidity: json['humidity'],
+    seaLevel: json['sea_level'],
+    grndLevel: json['grnd_level'],
+    visibility: json['visibility'],
+  );
+}
+
+@immutable
+class Wind {
+  final double speed;
+  final int deg;
+  final double? gust;
+
+  const Wind({required this.speed, required this.deg, this.gust});
+
+  factory Wind.fromJson(Map<String, dynamic> json) => Wind(
+    speed: (json['speed'] as num?)?.toDouble() ?? 0.0,
+    deg: json['deg'] ?? 0,
+    gust: (json['gust'] as num?)?.toDouble(),
+  );
+}
+
+@immutable
+class Rain {
+  final double? oneHour;
+
+  const Rain({this.oneHour});
+
+  factory Rain.fromJson(Map<String, dynamic> json) {
+    return Rain(oneHour: (json['1h'] as num?)?.toDouble() ?? 0.0);
+  }
+}
+
+@immutable
+class Clouds {
+  final int all;
+
+  const Clouds({required this.all});
+
+  factory Clouds.fromJson(Map<String, dynamic> json) {
+    return Clouds(all: json['all'] ?? 0);
+  }
+}
+
+@immutable
+class Sys {
+  final int type;
+  final int id;
+  final String country;
+  final int sunrise;
+  final int sunset;
+
+  const Sys({
+    required this.type,
+    required this.id,
+    required this.country,
+    required this.sunrise,
+    required this.sunset,
+  });
+
+  factory Sys.fromJson(Map<String, dynamic> json) => Sys(
+    type: json['type'] ?? 0,
+    id: json['id'] ?? 0,
+    country: json['country'] ?? '',
+    sunrise: json['sunrise'] ?? 0,
+    sunset: json['sunset'] ?? 0,
+  );
+}

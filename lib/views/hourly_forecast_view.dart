@@ -17,7 +17,7 @@ class HourlyForecastView extends ConsumerWidget {
         return SizedBox(
           height: 100,
           child: ListView.builder(
-            itemCount: hourlyWeather.cnt,
+            itemCount: hourlyWeather.list.length,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {

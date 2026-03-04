@@ -16,7 +16,7 @@ class WeatherDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final weatherData = ref.watch((weatherByCityNameProvider(cityName)));
 
-    return Scaffold(
+    return Scaffold(      
       body: weatherData.when(
         data: (weather) {
           return GradientContainer(
