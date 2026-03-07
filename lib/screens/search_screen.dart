@@ -16,7 +16,6 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   late final TextEditingController _controller;
-
   List<FamousCity> filteredCities = famousCities;
 
   @override

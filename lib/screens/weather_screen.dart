@@ -20,36 +20,37 @@ class WeatherScreen extends ConsumerWidget {
           return GradientContainer(
             children: [
               const SizedBox(height: 20),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(weather.name, style: TextStyles.h1),
-                      const SizedBox(height: 20),
-                      Text(
-                        DateTime.now().dateTime,
-                        style: TextStyles.subtitleText,
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(weather.name, style: TextStyles.h1),
+                  const SizedBox(height: 20),
+                  Text(DateTime.now().dateTime, style: TextStyles.subtitleText),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    height: 260,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/icons/${weather.weather[0].icon.replaceAll('n', 'd')}.png',
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(
+                            Icons.wb_sunny,
+                            size: 120,
+                            color: Colors.white,
+                          );
+                        },
                       ),
-                      const SizedBox(height: 30),
-                      SizedBox(
-                        height: 260,
-                        child: Center(
-                          child: Image.asset(
-                            'assets/icons/${weather.weather[0].icon.replaceAll('n', 'd')}.png',
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 40),
-                      Text(
-                        weather.weather[0].description,
-                        style: TextStyles.h2,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 40),
+                  Text(
+                    weather.weather[0].description,
+                    style: TextStyles.h2,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
 
               const SizedBox(height: 40),
@@ -63,7 +64,7 @@ class WeatherScreen extends ConsumerWidget {
                   const Text('Today', style: TextStyles.h2),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const CitiesWeatherScreen(),
@@ -75,7 +76,7 @@ class WeatherScreen extends ConsumerWidget {
                 ],
               ),
               const SizedBox(height: 15),
-              const HourlyForecastView(),
+              Expanded(child: const HourlyForecastView()),
             ],
           );
         },

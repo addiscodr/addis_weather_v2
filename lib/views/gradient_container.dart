@@ -10,28 +10,28 @@ class GradientContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            colors: [
-              AppColors.black,
-              AppColors.secondaryBlack,
-              AppColors.darkBlue,
-              AppColors.accentBlue,
-              AppColors.lightBlue,
-            ],
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          colors: [
+            AppColors.black,
+            AppColors.secondaryBlack,
+            AppColors.darkBlue,
+            AppColors.accentBlue,
+            AppColors.lightBlue,
+          ],
+        ),
+      ),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: children,
           ),
         ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: children),
-          ),
-        ),
-      );
-    
+      ),
+    );
   }
 }

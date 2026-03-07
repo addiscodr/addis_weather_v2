@@ -34,4 +34,31 @@ List<FamousCity> famousCities = [
   FamousCity(name: 'Washington, D.C.', lat: 38.893595000000005, lon: -77.01458),
 
   FamousCity(name: 'Berlin', lat: 52.52426800, lon: 13.40629000),
+
+  FamousCity(name: 'Frankfurt', lat: 50.110924, lon: 8.682127),
+
+  FamousCity(name: 'Seoul', lat: 37.532600, lon: 127.024612),
+
+  FamousCity(name: 'Khartoum', lat: 15.508457, lon: 32.522854),
+
+  FamousCity(name: 'Los Angeles', lat: 34.052235, lon: -118.243683),
+
+  FamousCity(name: 'Zurich', lat: 8.53918250, lon: 47.36864980),
+
+  FamousCity(name: 'Bon', lat: 35.957371, lon: -87.324760),
+
+  FamousCity(name: 'Johannesburg', lat: -26.204103, lon: 28.047304),
+
+  FamousCity(name: 'Pretoria', lat: -25.747868, lon: 28.229271),
+
+  FamousCity(name: 'Tel Aviv', lat: 32.085300, lon: 34.781769),
+
+  FamousCity(name: 'Lagos', lat: 6.524379, lon: 3.379206),
+
+  FamousCity(name: 'Tunis', lat: 36.806389, lon: 10.181667),
+
+  FamousCity(name: 'Toronto', lat: 43.651070, lon: -79.347015),
+
+  FamousCity(name: 'Hong Kong', lat: 22.302711, lon: 114.177216),
 ];
+

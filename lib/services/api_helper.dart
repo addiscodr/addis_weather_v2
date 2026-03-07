@@ -58,6 +58,25 @@ class ApiHelper {
     return Weather.fromJson(response);
   }
 
+  static Future<HourlyWeather> getHourlyForecastByCoords(
+    double lat,
+    double lon,
+  ) async {
+    final url = _constructForecastUrl(lat, lon);
+    final response = await _fetchData(url);
+    return HourlyWeather.fromJson(response);
+  }
+
+  static Future<WeeklyWeather> getWeeklyForecastByCoords(
+    double lat,
+    double lon,
+  ) async {
+    final url = _constructWeeklyForecastUrl(lat, lon);
+    final response = await _fetchData(url);
+    return WeeklyWeather.fromJson(response);
+  }
+
+
   // build urls
   static String _constructWeatherUrl(double lat, double lon) =>
       '$baseUrl/weather?lat=$lat&lon=$lon&units=metric&appid=${Constants.apiKey}';
