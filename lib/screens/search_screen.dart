@@ -1,8 +1,10 @@
-import 'package:addis_weather_v2/constants/app_colors.dart';
 import 'package:addis_weather_v2/constants/text_styles.dart';
+import 'package:addis_weather_v2/screens/home_screen.dart';
+import 'package:addis_weather_v2/models/famous_city.dart';
 import 'package:addis_weather_v2/views/famous_cities_view.dart';
 import 'package:addis_weather_v2/views/gradient_container.dart';
 import 'package:addis_weather_v2/widgets/round_text_field.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -15,23 +17,56 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   late final TextEditingController _controller;
 
+  List<FamousCity> filteredCities = famousCities;
+
   @override
   void initState() {
     super.initState();
+
     _controller = TextEditingController();
+
+    _controller.addListener(_filterCities);
+  }
+
+  void _filterCities() {
+    final query = _controller.text.toLowerCase();
+
+    final results = famousCities.where((city) {
+      return city.name.toLowerCase().contains(query);
+    }).toList();
+
+    setState(() {
+      filteredCities = results;
+    });
   }
 
   @override
   void dispose() {
+    _controller.removeListener(_filterCities);
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(            
+    return Scaffold(
       body: GradientContainer(
         children: [
+          Row(
+            children: [
+              CupertinoButton(
+                padding: EdgeInsets.zero,
+
+                child: const Icon(CupertinoIcons.back, color: Colors.white),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
+            ],
+          ),
           const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -48,32 +83,13 @@ class _SearchScreenState extends State<SearchScreen> {
           Row(
             children: [
               Expanded(child: RoundTextField(controller: _controller)),
-              const SizedBox(width: 15),
-              const LocationIcon(),
             ],
           ),
           const SizedBox(height: 30),
-          // famous cities view
-          const FamousCitiesView(),
+
+          Expanded(child: FamousCitiesView(cities: filteredCities)),
         ],
       ),
-    );
-  }
-}
-
-class LocationIcon extends StatelessWidget {
-  const LocationIcon({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55,
-      width: 55,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: AppColors.accentBlue,
-      ),
-      child: const Icon(Icons.location_on_outlined, color: Colors.white),
     );
   }
 }

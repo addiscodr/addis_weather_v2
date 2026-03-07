@@ -15,7 +15,7 @@ class RoundTextField extends StatelessWidget {
         color: AppColors.accentBlue,
       ),
       child: TextField(
-        controller: controller,
+        controller: controller,        
         style: const TextStyle(color: Colors.white),
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.only(left: 20, top: 10),
@@ -24,6 +24,9 @@ class RoundTextField extends StatelessWidget {
           focusColor: Colors.white,
           hintText: 'Search',
           hintStyle: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400),
+          suffixIcon: Icon(Icons.search_rounded, color: Colors.white70,),       
+          
+
         ),
       ),
     );

@@ -43,6 +43,7 @@ class FamousCityTile extends ConsumerWidget {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                           ),
+                          const SizedBox(height: 10),
                         ],
                       ),
                     ),

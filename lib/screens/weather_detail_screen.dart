@@ -1,11 +1,13 @@
-import 'package:addis_weather_v2/providers/get_weather_by_city_provider.dart';
-import 'package:addis_weather_v2/views/weather_info.dart';
+import 'package:addis_weather_v2/screens/search_screen.dart';
+import '/providers/get_weather_by_city_provider.dart';
+import '/views/weather_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/constants/text_styles.dart';
 import '/extensions/datetime.dart';
 import '/extensions/strings.dart';
 import '/views/gradient_container.dart';
+import 'package:flutter/cupertino.dart';
 
 class WeatherDetailScreen extends ConsumerWidget {
   const WeatherDetailScreen({super.key, required this.cityName});
@@ -16,11 +18,26 @@ class WeatherDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final weatherData = ref.watch((weatherByCityNameProvider(cityName)));
 
-    return Scaffold(      
+    return Scaffold(
       body: weatherData.when(
         data: (weather) {
           return GradientContainer(
             children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    child: const Icon(CupertinoIcons.back, color: Colors.white),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchScreen()),
+                      );
+                    },
+                  ),
+                ],
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
