@@ -1,6 +1,7 @@
 import 'package:addis_weather_v2/constants/text_styles.dart';
 import 'package:addis_weather_v2/models/famous_city.dart';
 import 'package:addis_weather_v2/providers/get_weather_by_city_provider.dart';
+import 'package:addis_weather_v2/screens/weather_screen.dart';
 import 'package:addis_weather_v2/views/gradient_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,10 @@ class CitiesWeatherScreen extends ConsumerWidget {
                 padding: EdgeInsets.zero,
                 child: const Icon(CupertinoIcons.back, color: Colors.white),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WeatherScreen()),
+                  );
                 },
               ),
             ],

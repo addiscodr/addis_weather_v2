@@ -1,8 +1,8 @@
-import 'package:addis_weather_v2/models/weekly_weather.dart';
+//import 'package:addis_weather_v2/models/weekly_weather.dart';
 import 'package:flutter/material.dart';
 
 class WeeklyForecastView extends StatelessWidget {
-  const WeeklyForecastView({super.key, required WeeklyWeather data});
+  const WeeklyForecastView({super.key});
 
   @override
   Widget build(BuildContext context) {

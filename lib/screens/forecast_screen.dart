@@ -1,7 +1,7 @@
 import 'package:addis_weather_v2/constants/text_styles.dart';
 import 'package:addis_weather_v2/extensions/datetime.dart';
 import 'package:addis_weather_v2/models/famous_city.dart';
-import 'package:addis_weather_v2/screens/cities_weather_screen.dart';
+import 'package:addis_weather_v2/screens/home_screen.dart';
 import 'package:addis_weather_v2/services/api_helper.dart';
 import 'package:addis_weather_v2/views/gradient_container.dart';
 import 'package:addis_weather_v2/views/hourly_forecast_view.dart';
@@ -50,13 +50,13 @@ class _ForecastScreenState extends State<ForecastScreen> {
               children: [
                 CupertinoButton(
                   padding: EdgeInsets.zero,
+                  child: const Icon(CupertinoIcons.back, color: Colors.white),
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CitiesWeatherScreen(),
+                      builder: (context) => HomeScreen(),
                     ),
-                  ),
-                  child: const Icon(CupertinoIcons.back, color: Colors.white),
+                  ),                  
                 ),
               ],
             ),
@@ -78,6 +78,7 @@ class _ForecastScreenState extends State<ForecastScreen> {
                 hintText: "Search city...",
                 hintStyle: const TextStyle(color: Colors.white54),
                 filled: true,
+                // ignore: deprecated_member_use
                 fillColor: Colors.white.withOpacity(.1),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -173,10 +174,7 @@ class _ForecastScreenState extends State<ForecastScreen> {
                     );
                   }
 
-                  return SizedBox(
-                    height: 300,
-                    child: WeeklyForecastView(data: snapshot.data!),
-                  );
+                  return SizedBox(height: 300, child: WeeklyForecastView());
                 },
               ),
             ],
