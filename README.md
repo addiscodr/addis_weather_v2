@@ -1,6 +1,6 @@
-# addis_weather_v2
+# Weather Recommendation
 
-A new Flutter project.
+This is a weather recommendation application...
 
 ## Getting Started
 
