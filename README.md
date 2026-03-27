@@ -1,4 +1,4 @@
-# Weather Recommendation
+# Weather Information
 
 This is a weather recommendation application...
 
